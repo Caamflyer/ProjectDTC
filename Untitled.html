@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+<meta charset=utf-8 />
+<title></title>
+</head>
+<body>
+<div class="span3"></div>
+	<div id="navSide">
+	<div class="span3" style='margin-top: 20px; border: 1px solid #E6E6E6; border-radius: 10px; position: fixed;'>
+	<ul id= ''class="nav nav-list">
+  		<li class="nav-header">My Videos</li>
+ 	 	<li><a href="#DTCs_Minecraft">DTC's Minecraft</a></li>
+  		<li><a href="#DTCsPA_01">DTC's Project Ares Gameplay #0.1</a></li>
+		<!--li><a href="#">Blitz! Episode 1</a></li>
+		<li><a href="#">DTC's Minecraft Cookieslap Quick Video: Episode 1 LAG</a></li-->
+	</ul>
+	</div>
+	</div>
+	<div data-spy="scroll" data-target="#navSide" data-offset="0">
+	<div class="span10" style='margin-top: 20px; border: 1px solid #E6E6E6; border-radius: 10px;'>
+	<!-- Recent Upload -->
+	<div id="DTCs_Minecraft">
+	<center><H1 id="recent">DTC's Minecraft</H1></center>
+	<br /><center><div id="static_video"><H1>DTC's Minecraft</H1></div></center><br />
+	        <script type="text/javascript">
+            function showVideo(response) {
+                if(response.data && response.data.items) {
+                    var items = response.data.items;
+                    if(items.length>0) {
+                        var item = items[0];
+                        var videoid = "http://www.youtube.com/embed/"+item.id;
+                        console.log("Latest ID: '"+videoid+"'");
+                        var video = "<iframe width='600' height='350' src='"+videoid+"' frameborder='0' allowfullscreen></iframe>"; 
+                        $('#static_video').html(video);
+                    }
+                }
+            }
+        </script>
+        <script type="text/javascript" src="https://gdata.youtube.com/feeds/api/users/OfficialDTCVideos/uploads?max-results=1&orderby=published&v=2&alt=jsonc&callback=showVideo"></script></div>
+<!-- End of Recent Upload -->
+<hr>
+<div id="DTCsPA_01>
+<center><H1>DTC's Project Ares Gameplay #0.1</H1></center><br />
+<center><iframe width="600" height="350" src="//www.youtube.com/embed/K5nv1UdPxWE" frameborder="0" allowfullscreen></iframe></center><br /></div>
+	</div>
+	</div>
+
+</body>
+</html>

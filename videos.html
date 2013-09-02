@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+	    <link rel="shortcut icon" type="image/x-icon" href="http://i.imgur.com/TBxIEkR.png">
+		<title>Project DTC - Videos</title>
+		
+		
+		<!-- Ignore -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	<script>
+	$(function() {
+	
+		function filterPath(string) {
+			return string
+			.replace(/^\//,'')
+			.replace(/(index|default).[a-zA-Z]{3,4}$/,'')
+			.replace(/\/$/,'');
+		}
+	
+		var locationPath = filterPath(location.pathname);
+		var scrollElem = scrollableElement('html', 'body');
+	
+		// Any links with hash tags in them (can't do ^= because of fully qualified URL potential)
+		$('a[href*=#]').each(function() {
+	
+			// Ensure it's a same-page link
+			var thisPath = filterPath(this.pathname) || locationPath;
+			if (  locationPath == thisPath
+				&& (location.hostname == this.hostname || !this.hostname)
+				&& this.hash.replace(/#/,'') ) {
+	
+					// Ensure target exists
+					var $target = $(this.hash), target = this.hash;
+					if (target) {
+	
+						// Find location of target
+						var targetOffset = $target.offset().top;
+						$(this).click(function(event) {
+	
+							// Prevent jump-down
+							event.preventDefault();
+	
+							// Animate to target
+							$(scrollElem).animate({scrollTop: targetOffset}, 400, function() {
+	
+								// Set hash in URL after animation successful
+								location.hash = target;
+	
+							});
+						});
+					}
+			}
+	
+		});
+	
+		// Use the first element that is "scrollable"  (cross-browser fix?)
+		function scrollableElement(els) {
+			for (var i = 0, argLength = arguments.length; i <argLength; i++) {
+				var el = arguments[i],
+				$scrollElement = $(el);
+				if ($scrollElement.scrollTop()> 0) {
+					return el;
+				} else {
+					$scrollElement.scrollTop(1);
+					var isScrollable = $scrollElement.scrollTop()> 0;
+					$scrollElement.scrollTop(0);
+					if (isScrollable) {
+						return el;
+					}
+				}
+			}
+			return [];
+		}
+	
+	});
+	</script>
+			<!-- Ignore -->
+	</head>
+	<body>
+	<!-- NavBar -->
+  <div class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-inner">
+    <a class='brand' href='#' style='margin-right: 15px;'>Project DTC</a>
+    <ul class="nav">
+      <li><a href="index.html"><i class="icon-home"></i> Home</a></li>
+	  <li><a href="newsandevents.html"><i class="icon-bookmark"></i> News and Events <span class="label label-success"> New!</span></a></li>
+      <li><a href="projects.html"><i class="icon-briefcase"></i> Projects</a></li>
+      <li class="active"><a href="videos.html"><i class="icon-film"></i> Videos <span class="label label-success"> New!</span></a></li>
+      <li><a href="mybuds.html"><i class="icon-user"></i> My Buds</a></li>
+	  <li><a href="aboutme.html"><i class="icon-inbox"></i> About Me</a></li>
+	  	</ul>
+	<!-- Take Off When Ready <ul class='nav pull-right'>
+      <li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#'><i class='icon-off'></i><b class='caret'></b></a>
+	<ul class='dropdown-menu'>
+      <li><a href='#'>Login</a></li>
+	  <li><a href='#'>Register</a></li>
+	</ul> -->
+  </div>
+  </div>
+  </div>
+	<!-- End of NavBar -->
+	<div id="container">
+	<div class="span3"></div>
+	<div id="navSide">
+	<div class="span3" style='margin-top: 20px; border: 1px solid #E6E6E6; border-radius: 10px; position: fixed;'>
+	<ul class="nav nav-list">
+  		<li class="nav-header">My Videos</li>
+		<li><a href="#DTCs_Minecraft">Recent Video</a></li><hr style='margin-top:0px; margin-bottom:10px;'>
+ 	 	<li><a href="#DTCs_Minecraft">DTC's Minecraft</a></li>
+  		<li><a href="#DTCs_Project_Ares_Gameplay_01">DTC's Project Ares Gameplay #0.1</a></li>
+		<li><a href="#Blitz_Episode_1">Blitz! Episode 1</a></li>
+		<li><a href="#DTCs_Minecraft_Cookieslap_Quick_Video_Ep_1LAG">DTC's Minecraft Cookieslap Quick Video: Episode 1 LAG</a></li>
+		<li><a href="#Aquais">Aquais</a></li>
+	</ul>
+	</div>
+	</div>
+	<div class="span10" style='margin-top: 20px; border: 1px solid #E6E6E6; border-radius: 10px;'>
+	
+	<!-- Recent Uploads -->
+	<center id="DTCs_Minecraft"><H1 id="recent">DTC's Minecraft</H1></center>
+	<br /><center><div id="static_video"><H1>DTC's Minecraft</H1></div></center><br />
+	        <script type="text/javascript">
+            function showVideo(response) {
+                if(response.data && response.data.items) {
+                    var items = response.data.items;
+                    if(items.length>0) {
+                        var item = items[0];
+                        var videoid = "http://www.youtube.com/embed/"+item.id;
+                        console.log("Latest ID: '"+videoid+"'");
+                        var video = "<iframe width='600' height='350' src='"+videoid+"' frameborder='0' allowfullscreen></iframe>"; 
+                        $('#static_video').html(video);
+                    }
+                }
+            }
+        </script>
+        <script type="text/javascript" src="https://gdata.youtube.com/feeds/api/users/OfficialDTCVideos/uploads?max-results=1&orderby=published&v=2&alt=jsonc&callback=showVideo"></script>
+<!-- End of Recent Upload -->
+
+<!-- Other Videos -->
+<hr>
+<center id="DTCs_Project_Ares_Gameplay_01"><H1>DTC's Project Ares Gameplay #0.1</H1></center><br />
+<center><iframe width="600" height="350" src="//www.youtube.com/embed/K5nv1UdPxWE" frameborder="0" allowfullscreen></iframe></center><br />
+
+<hr>
+<center id="Blitz_Episode_1"><H1>Blitz! Episode 1</H1></center><br />
+<center><iframe width="600" height="350" src="//www.youtube.com/embed/NvinvhpWZFk" frameborder="0" allowfullscreen></iframe></center><br />
+
+<hr>
+<center id="DTCs_Minecraft_Cookieslap_Quick_Video_Ep_1LAG"><H1>DTC's Minecraft Cookieslap Quick Video: Episode 1 LAG</H1></center><br />
+<center><iframe width="600" height="350" src="//www.youtube.com/embed/LDyYb8F9JH0" frameborder="0" allowfullscreen></iframe></center><br />
+
+<hr>
+<center id="Aquais"><H1>Aquais</H1></center><br />
+<center><iframe width="600" height="350" src="//www.youtube.com/embed/kBbi00XmMmw" frameborder="0" allowfullscreen></iframe></center><br />
+
+
+	</div>
+	</div>
+		</body>
+	
+	<!-- Footer -->
+	<footer>
+	<div id="container" style='margin-top: 2500px;'><hr>
+	<ul class="nav nav-pills">
+ 	  <li><a href="update.html">Updates</a></li>
+      <li><a href="newsandevents.html">News and Events</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="mybuds.html">My Buds</a></li>
+      <li><a href="aboutme.html">About Me</a></li>
+	  <li><a href="contact.html">Contact</a></li>
+	<ul class="nav nav-pills pull-right">
+	<li><a href="#">&copy; Project DTC  </a></li>
+	</ul>
+	</div>
+	</footer>
+	<!-- End of Footer -->
+</html>

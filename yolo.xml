@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+<name>Map Name</name>
+<version>1.0</version> 
+<objective>Short description about the maps objective.</objective>
+
+<authors>
+    <author contribution="The General Idea and Map Making">DizzyOreo</author> 
+    <author contribution="Map design and XML codeing">Caamflyer64</author>
+	<author contribution=""></author>
+</authors>
+
+<contributors>
+    <contributor contribution="A contribution">aHelper</contributor>
+</contributors>
+
+<!-- Map modules, i.e. objectives, regions, spawns. -->
+
+</map>
