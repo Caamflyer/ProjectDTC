@@ -14,6 +14,16 @@
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 			<!-- Ignore -->
+		<script language="javascript" type="text/javascript"> 
+var maxAmount = 250;
+function textCounter(textField, showCountField) {
+    if (textField.value.length > maxAmount) {
+        textField.value = textField.value.substring(0, maxAmount);
+	} else { 
+        showCountField.value = maxAmount - textField.value.length;
+	}
+}
+</script>
 	</head>
 	<body>
 	<!-- NavBar -->
@@ -88,7 +98,11 @@
 <input id="email" name="cf_email" type="email" class="span3" placeholder="Email address">
 </div>
 <div class="controls">
-<textarea id="message" name="cf_message" class="span6" placeholder="Your Message" rows="5"></textarea>
+<form>
+<textarea  id="message" name="ta" name="cf_message" class="span6" placeholder="Your Message" rows="6" style="width:340px;" onKeyDown="textCounter(this.form.ta,this.form.countDisplay);" onKeyUp="textCounter(this.form.ta,this.form.countDisplay);"></textarea>
+<br>
+<input readonly type="text" name="countDisplay" size="3" maxlength="3" value="250"> Characters Remaining
+</form>
 </div>
 <div class="controls">
 <button id="contact-submit" type="submit" value="Send" class="btn btn-primary input-medium pull-right">Send</button>
